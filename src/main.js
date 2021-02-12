@@ -126,7 +126,7 @@ savedButton.addEventListener('click', showSavePoster)
 
 backToMain.addEventListener('click', takeBackToMain)
 
-neverMindButton.addEventListener("click",neverMindBack)
+neverMindButton.addEventListener('click',neverMindBack)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
