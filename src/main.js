@@ -1,15 +1,23 @@
 // query selector variables go here 👇
-var currentPoster = document.querySelector('.poster-img'); //targets the image in HTML
-var title = document.querySelector('.poster-title') // targets the poster title class in HTML doc
-var quote = document.querySelector('.poster-quote') // targets the poster quote class in HTML doc
-var showRandomButton = document.querySelector('.show-random')
-var makeYourButton = document.querySelector('.show-form')
-var posterForm = document.querySelector('.poster-form')
-var mainPoster = document.querySelector('.main-poster')
-var savePosters = document.querySelector('.saved-posters')
-var savedButton = document.querySelector('.show-saved')
-var backToMain = document.querySelector('.back-to-main')
-var neverMindButton = document.querySelector('.show-main')
+var currentPoster = document.querySelector(".poster-img"); //targets the image in HTML
+var title = document.querySelector(".poster-title") // targets the poster title class in HTML doc
+var quote = document.querySelector(".poster-quote") // targets the poster quote class in HTML doc
+var showRandomButton = document.querySelector(".show-random")
+var makeYourButton = document.querySelector(".show-form")
+var posterForm = document.querySelector(".poster-form")
+var mainPoster = document.querySelector(".main-poster")
+var savePosters = document.querySelector(".saved-posters")
+var savedButton = document.querySelector(".show-saved")
+var backToMain = document.querySelector(".back-to-main")
+var neverMindButton = document.querySelector(".show-main")
+
+//user input fields
+var imgField = document.querySelector("#poster-image-url")
+var titleField = document.querySelector("#poster-title")
+var quoteField = document.querySelector("#poster-quote")
+var makePosterButton = document.querySelector(".make-poster")
+
+var showPoster = document.querySelector("show-my-poster")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -108,25 +116,26 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-// var savedPosters = [];
-var currentPoster;
+var savedPosters = [];
 
 currentPoster.src = randomizeImage(); //assigns currentPoster to a random image from array
 
-title.innerText = randomizeTitle();
+title.innerText =  randomizeTitle();
 
 quote.innerText = randomizeQuote();
 
 // event listeners go here 👇
-showRandomButton.addEventListener('click', randomizeImage);
+showRandomButton.addEventListener("click", randomizeImage);
 
-makeYourButton.addEventListener('click', showForm);
+makeYourButton.addEventListener("click", showForm);
 
-savedButton.addEventListener('click', showSavePoster)
+savedButton.addEventListener("click", showSavePoster)
 
-backToMain.addEventListener('click', takeBackToMain)
+backToMain.addEventListener("click", takeBackToMain)
 
-neverMindButton.addEventListener('click',neverMindBack)
+neverMindButton.addEventListener("click",neverMindBack)
+
+makePosterButton.addEventListener('click', useInputFields)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -162,7 +171,28 @@ savePosters.classList.toggle("hidden");
 mainPoster.classList.toggle("hidden")
 }
 
+//input fields functions
 function neverMindBack() {
 posterForm.classList.toggle("hidden");
 mainPoster.classList.toggle("hidden")
 }
+
+function useInputFields() {
+  event.preventDefault()
+  currentPoster.src = imgField.value;
+  title.innerText = titleField.value;
+  quote.innerText = quoteField.value;
+  posterForm.classList.toggle("hidden");
+  mainPoster.classList.toggle("hidden")
+
+}
+
+
+// function useImage() {
+//   imgField.preventDefault()
+//   if (imgField.innerText != "https://gph.is/2n553Ra") {
+//     currentPoster.src = imgField.value
+//   } else {
+//     currentPoster.src = randomizeImage()
+//   }
+// }
