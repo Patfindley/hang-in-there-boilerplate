@@ -18,6 +18,7 @@ var quoteField = document.querySelector("#poster-quote")
 var makePosterButton = document.querySelector(".make-poster")
 
 var showPoster = document.querySelector("show-my-poster")
+var saveNewPosterButton = document.querySelector(".save-poster")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -120,7 +121,7 @@ var savedPosters = [];
 
 currentPoster.src = randomizeImage(); //assigns currentPoster to a random image from array
 
-title.innerText =  randomizeTitle();
+title.innerText = randomizeTitle();
 
 quote.innerText = randomizeQuote();
 
@@ -133,9 +134,12 @@ savedButton.addEventListener("click", showSavePoster)
 
 backToMain.addEventListener("click", takeBackToMain)
 
-neverMindButton.addEventListener("click",neverMindBack)
+neverMindButton.addEventListener("click", neverMindBack)
 
 makePosterButton.addEventListener('click', useInputFields)
+
+saveNewPosterButton.addEventListener('click', saveThisNewPoster)
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -167,14 +171,14 @@ function showSavePoster() {
 
 
 function takeBackToMain() {
-savePosters.classList.toggle("hidden");
-mainPoster.classList.toggle("hidden")
+  savePosters.classList.toggle("hidden");
+  mainPoster.classList.toggle("hidden")
 }
 
 //input fields functions
 function neverMindBack() {
-posterForm.classList.toggle("hidden");
-mainPoster.classList.toggle("hidden")
+  posterForm.classList.toggle("hidden");
+  mainPoster.classList.toggle("hidden")
 }
 
 function useInputFields() {
@@ -184,15 +188,10 @@ function useInputFields() {
   quote.innerText = quoteField.value;
   posterForm.classList.toggle("hidden");
   mainPoster.classList.toggle("hidden")
-
 }
 
-
-// function useImage() {
-//   imgField.preventDefault()
-//   if (imgField.innerText != "https://gph.is/2n553Ra") {
-//     currentPoster.src = imgField.value
-//   } else {
-//     currentPoster.src = randomizeImage()
-//   }
-// }
+function saveThisNewPoster() {
+  var newPoster = new Poster (imgField.value, titleField.value, quoteField.value)
+  savedPosters.push(newPoster)
+  console.log(savedPosters)
+}
