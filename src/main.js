@@ -17,8 +17,9 @@ var titleField = document.querySelector("#poster-title")
 var quoteField = document.querySelector("#poster-quote")
 var makePosterButton = document.querySelector(".make-poster")
 
-var showPoster = document.querySelector("show-my-poster")
 var saveNewPosterButton = document.querySelector(".save-poster")
+var savedPostersGrid = document.querySelector(".saved-posters-grid")
+var img = document.createElement('img')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -140,7 +141,6 @@ makePosterButton.addEventListener('click', useInputFields)
 
 saveNewPosterButton.addEventListener('click', saveThisNewPoster)
 
-
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function randomizeImage() {
@@ -191,7 +191,13 @@ function useInputFields() {
 }
 
 function saveThisNewPoster() {
-  var newPoster = new Poster (imgField.value, titleField.value, quoteField.value)
-  savedPosters.push(newPoster)
-  console.log(savedPosters)
+var newPoster = new Poster(imgField.value, titleField.value, quoteField.value)
+    savedPosters.push(newPoster);
+    //savedPostersGrid.classList.add("saved-posters-grid")
+    img.src = newPoster.imageURL;
+    savedPostersGrid.appendChild(img);
 }
+
+
+//savedPostersGrid.classList.add("img");
+//savedPostersGrid.img.src = savedPosters[0]
