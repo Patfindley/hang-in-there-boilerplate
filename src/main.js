@@ -1,25 +1,30 @@
 // query selector variables go here 👇
 var currentPoster = document.querySelector(".poster-img"); //targets the image in HTML
-var title = document.querySelector(".poster-title") // targets the poster title class in HTML doc
-var quote = document.querySelector(".poster-quote") // targets the poster quote class in HTML doc
-var showRandomButton = document.querySelector(".show-random")
-var makeYourButton = document.querySelector(".show-form")
-var posterForm = document.querySelector(".poster-form")
-var mainPoster = document.querySelector(".main-poster")
-var savePosters = document.querySelector(".saved-posters")
-var savedButton = document.querySelector(".show-saved")
-var backToMain = document.querySelector(".back-to-main")
-var neverMindButton = document.querySelector(".show-main")
-
+var title = document.querySelector(".poster-title"); // targets the poster title class in HTML doc
+var quote = document.querySelector(".poster-quote"); // targets the poster quote class in HTML doc
+var showRandomButton = document.querySelector(".show-random");
+var makeYourButton = document.querySelector(".show-form");
+var posterForm = document.querySelector(".poster-form");
+var mainPoster = document.querySelector(".main-poster");
+var savePosters = document.querySelector(".saved-posters");
+var savedButton = document.querySelector(".show-saved");
+var backToMain = document.querySelector(".back-to-main");
+var neverMindButton = document.querySelector(".show-main");
+var poster = document.querySelector(".poster")
 //user input fields
-var imgField = document.querySelector("#poster-image-url")
-var titleField = document.querySelector("#poster-title")
-var quoteField = document.querySelector("#poster-quote")
-var makePosterButton = document.querySelector(".make-poster")
+var imgField = document.querySelector("#poster-image-url");
+var titleField = document.querySelector("#poster-title");
+var quoteField = document.querySelector("#poster-quote");
+var makePosterButton = document.querySelector(".make-poster");
 
-var saveNewPosterButton = document.querySelector(".save-poster")
-var savedPostersGrid = document.querySelector(".saved-posters-grid")
-var img = document.createElement('img')
+var saveNewPosterButton = document.querySelector(".save-poster");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
+
+var savedImg = document.querySelector("img")
+var savedTitle = document.querySelector("h1");
+var savedQuote = document.querySelector("h3");
+
+var savedContent = mainPoster.innerHTML
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -192,10 +197,13 @@ function useInputFields() {
 
 function saveThisNewPoster() {
 var newPoster = new Poster(imgField.value, titleField.value, quoteField.value)
-    savedPosters.push(newPoster);
-    //savedPostersGrid.classList.add("saved-posters-grid")
-    img.src = newPoster.imageURL;
-    savedPostersGrid.appendChild(img);
+    savedPosters.unshift(newPoster);
+    savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
+                                      <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
+                                      <h1 class='poster-title'> ${savedPosters[0].title} </h1>
+                                      <h3 lcass='poster-quote'> ${savedPosters[0].quote} </h3>
+                                  </article>`
+
 }
 
 
