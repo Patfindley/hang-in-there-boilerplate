@@ -1,25 +1,30 @@
 // query selector variables go here 👇
+
+// buttons
+var makeYourPosterButton = document.querySelector(".show-form");
+var showSavedButton = document.querySelector(".show-saved");
+var neverMindButton = document.querySelector(".show-main");
+var makePosterButton = document.querySelector(".make-poster");
+var showRandomButton = document.querySelector(".show-random");
+var saveNewPosterButton = document.querySelector(".save-poster");
+var backToMainButton = document.querySelector(".back-to-main");
+
+//main page
 var currentPoster = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote");
-var showRandomButton = document.querySelector(".show-random");
-var makeYourButton = document.querySelector(".show-form");
 var posterForm = document.querySelector(".poster-form");
 var mainPoster = document.querySelector(".main-poster");
-var savePosters = document.querySelector(".saved-posters");
-var savedButton = document.querySelector(".show-saved");
-var backToMain = document.querySelector(".back-to-main");
-var neverMindButton = document.querySelector(".show-main");
 var poster = document.querySelector(".poster")
+
 //user input fields
 var imgField = document.querySelector("#poster-image-url");
 var titleField = document.querySelector("#poster-title");
 var quoteField = document.querySelector("#poster-quote");
-var makePosterButton = document.querySelector(".make-poster");
 
-var saveNewPosterButton = document.querySelector(".save-poster");
+//saved images page
+var savePosters = document.querySelector(".saved-posters");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
-
 var savedImg = document.querySelector("img")
 var savedTitle = document.querySelector("h1");
 var savedQuote = document.querySelector("h3");
@@ -134,17 +139,17 @@ quote.innerText = randomizeQuote();
 // event listeners go here 👇
 showRandomButton.addEventListener("click", randomizeImage);
 
-makeYourButton.addEventListener("click", showForm);
+makeYourPosterButton.addEventListener("click", showForm);
 
-savedButton.addEventListener("click", showSavePoster)
+showSavedButton.addEventListener("click", showSavePoster);
 
-backToMain.addEventListener("click", takeBackToMain)
+// saveNewPosterButton.addEventListener("click", saveNewPoster)
 
-neverMindButton.addEventListener("click", neverMindBack)
+backToMainButton.addEventListener("click", takeBackToMain);
 
-makePosterButton.addEventListener('click', useInputFields)
+neverMindButton.addEventListener("click", neverMindBack);
 
-//savedButton.addEventListener('click', saveThisNewPoster)
+makePosterButton.addEventListener('click', useInputFields);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -169,12 +174,17 @@ function showForm() {
   posterForm.classList.toggle("hidden");
 }
 
+// function saveNewPoster() {
+//
+// };
+
 function showSavePoster() {
   mainPoster.classList.toggle("hidden");
   savePosters.classList.toggle("hidden");
+  savedPostersGrid.innerHTML = ""
   var newPoster = new Poster(imgField.value, titleField.value, quoteField.value)
-      // saveNewPosterButton.innerText = "Saved!"
-      // saveNewPosterButton.styles.classList.add("transition-duration: 1s")
+      // savedButton.innerText = "Saved!"
+      // savedButton.styles.classList.add("transition-duration: 1s")
       if (!savedPosters.includes(newPoster)) {
         savedPosters.unshift(newPoster);
       savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
@@ -183,7 +193,7 @@ function showSavePoster() {
                                         <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
                                     </article>`
     }
-}
+};
 
 
 function takeBackToMain() {
@@ -205,17 +215,3 @@ function useInputFields() {
   posterForm.classList.toggle("hidden");
   mainPoster.classList.toggle("hidden")
 }
-
-// function saveThisNewPoster() {
-// var newPoster = new Poster(imgField.value, titleField.value, quoteField.value)
-//     // saveNewPosterButton.innerText = "Saved!"
-//     // saveNewPosterButton.styles.classList.add("transition-duration: 1s")
-//     if (!savedPosters.includes(newPoster)) {
-//       savedPosters.unshift(newPoster);
-//     savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
-//                                       <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
-//                                       <h1 class='poster-title'> ${savedPosters[0].title} </h1>
-//                                       <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
-//                                   </article>`
-//   }
-// }
