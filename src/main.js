@@ -125,14 +125,15 @@ var quotes = [
 ];
 var savedPosters = [];
 
-currentPoster.src = randomizeImage();
-
-title.innerText = randomizeTitle();
-
-quote.innerText = randomizeQuote();
+// currentPoster.src = randomizeImage();
+//
+// title.innerText = randomizeTitle();
+//
+// quote.innerText = randomizeQuote();
+randomizePoster();
 
 // event listeners go here 👇
-showRandomButton.addEventListener("click", randomizeImage);
+showRandomButton.addEventListener("click", randomizePoster);
 
 makeYourButton.addEventListener("click", showForm);
 
@@ -144,21 +145,27 @@ neverMindButton.addEventListener("click", neverMindBack)
 
 makePosterButton.addEventListener('click', useInputFields)
 
-//savedButton.addEventListener('click', saveThisNewPoster)
+saveNewPosterButton.addEventListener('click', saveThisNewPoster)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
-function randomizeImage() {
-  return currentPoster.src = images[getRandomIndex(images)];
-} // uses getRandomIndex to pull random image from images
-
-function randomizeTitle() {
-  return title.innerText = titles[getRandomIndex(titles)];
+function randomizePoster() {
+  quote.innerText = quotes[getRandomIndex(quotes)];
+  title.innerText = titles[getRandomIndex(titles)];
+  currentPoster.src = images[getRandomIndex(images)];
 }
 
-function randomizeQuote() {
-  return quote.innerText = quotes[getRandomIndex(quotes)];
-}
+// function randomizeImage() {
+//   return currentPoster.src = images[getRandomIndex(images)];
+// } // uses getRandomIndex to pull random image from images
+//
+// function randomizeTitle() {
+//   return title.innerText = titles[getRandomIndex(titles)];
+// }
+//
+// function randomizeQuote() {
+//   return
+// }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length); // takes array.length and returns a random whole number
@@ -172,17 +179,7 @@ function showForm() {
 function showSavePoster() {
   mainPoster.classList.toggle("hidden");
   savePosters.classList.toggle("hidden");
-  var newPoster = new Poster(imgField.value, titleField.value, quoteField.value)
-      // saveNewPosterButton.innerText = "Saved!"
-      // saveNewPosterButton.styles.classList.add("transition-duration: 1s")
-      if (!savedPosters.includes(newPoster)) {
-        savedPosters.unshift(newPoster);
-      savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
-                                        <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
-                                        <h1 class='poster-title'> ${savedPosters[0].title} </h1>
-                                        <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
-                                    </article>`
-    }
+
 }
 
 
@@ -206,16 +203,50 @@ function useInputFields() {
   mainPoster.classList.toggle("hidden")
 }
 
-// function saveThisNewPoster() {
-// var newPoster = new Poster(imgField.value, titleField.value, quoteField.value)
-//     // saveNewPosterButton.innerText = "Saved!"
-//     // saveNewPosterButton.styles.classList.add("transition-duration: 1s")
-//     if (!savedPosters.includes(newPoster)) {
-//       savedPosters.unshift(newPoster);
-//     savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
-//                                       <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
-//                                       <h1 class='poster-title'> ${savedPosters[0].title} </h1>
-//                                       <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
-//                                   </article>`
-//   }
-// }
+function saveThisNewPoster() {
+  var newPoster = new Poster(imgField.value, titleField.value, quoteField.value)
+  savedPostersGrid.innerHTML = ""
+  if (!savedPosters.includes(newPoster)) {
+    savedPosters.unshift(newPoster);
+    savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
+                                          <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
+                                           <h1 class='poster-title'> ${savedPosters[0].title} </h1>
+                                         <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
+                              </article>`
+  }
+
+  // if (!savedPosters.indexOf(newPoster.imageURL) === -1) {
+  //   savedPosters.push(newPoster);
+  //   console.log(savedPosters)
+  //   // savedPosters.unshift(newPoster);
+  //   savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
+  //                                         <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
+  //                                         <h1 class='poster-title'> ${savedPosters[0].title} </h1>
+  //                                         <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
+  //                               </article>`
+  //
+  // }
+
+
+  // if (savedPosters.length === 0) {
+  //   savedPosters.push(newPoster);
+  //   console.log(savedPosters);
+  //
+  //   savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
+  //                                         <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
+  //                                         <h1 class='poster-title'> ${savedPosters[0].title} </h1>
+  //                                         <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
+  //                               </article>`
+  // }
+  // if (!savedPosters.indexOf(newPoster.imageURL) === -1) {
+  //   savedPosters.push(newPoster);
+  //   console.log(savedPosters)
+  //   // savedPosters.unshift(newPoster);
+  //   savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
+  //                                         <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
+  //                                         <h1 class='poster-title'> ${savedPosters[0].title} </h1>
+  //                                         <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
+  //                               </article>`
+  //
+  // }
+}
