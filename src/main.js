@@ -238,15 +238,3 @@ function saveThisNewPoster() {
   //                                         <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
   //                               </article>`
   // }
-  // if (!savedPosters.indexOf(newPoster.imageURL) === -1) {
-  //   savedPosters.push(newPoster);
-  //   console.log(savedPosters)
-  //   // savedPosters.unshift(newPoster);
-  //   savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
-  //                                         <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
-  //                                         <h1 class='poster-title'> ${savedPosters[0].title} </h1>
-  //                                         <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
-  //                               </article>`
-  //
-  // }
-}
