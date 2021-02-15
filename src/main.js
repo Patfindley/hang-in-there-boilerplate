@@ -125,11 +125,6 @@ var quotes = [
 ];
 var savedPosters = [];
 
-// currentPoster.src = randomizeImage();
-//
-// title.innerText = randomizeTitle();
-//
-// quote.innerText = randomizeQuote();
 randomizePoster();
 
 // event listeners go here 👇
@@ -154,18 +149,6 @@ function randomizePoster() {
   title.innerText = titles[getRandomIndex(titles)];
   currentPoster.src = images[getRandomIndex(images)];
 }
-
-// function randomizeImage() {
-//   return currentPoster.src = images[getRandomIndex(images)];
-// } // uses getRandomIndex to pull random image from images
-//
-// function randomizeTitle() {
-//   return title.innerText = titles[getRandomIndex(titles)];
-// }
-//
-// function randomizeQuote() {
-//   return
-// }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length); // takes array.length and returns a random whole number
@@ -215,26 +198,4 @@ function saveThisNewPoster() {
                               </article>`
   }
 
-  // if (!savedPosters.indexOf(newPoster.imageURL) === -1) {
-  //   savedPosters.push(newPoster);
-  //   console.log(savedPosters)
-  //   // savedPosters.unshift(newPoster);
-  //   savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
-  //                                         <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
-  //                                         <h1 class='poster-title'> ${savedPosters[0].title} </h1>
-  //                                         <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
-  //                               </article>`
-  //
-  // }
-
-
-  // if (savedPosters.length === 0) {
-  //   savedPosters.push(newPoster);
-  //   console.log(savedPosters);
-  //
-  //   savedPostersGrid.innerHTML += `<article class='poster mini-poster'>
-  //                                         <img class='poster-img' src=' ${savedPosters[0].imageURL} '>
-  //                                         <h1 class='poster-title'> ${savedPosters[0].title} </h1>
-  //                                         <h3 class='poster-quote'> ${savedPosters[0].quote} </h3>
-  //                               </article>`
-  // }
+}
