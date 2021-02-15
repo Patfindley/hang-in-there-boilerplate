@@ -2,8 +2,7 @@
 
 #### Description
 
-Hang In There is a an application where user can generate random main page images, quotes, and title. Also create their own poster and save if they want.
-
+Hang In There is a an application where users can generate random images, quotes, and title to make their very own inspirational poster! Users can also upload their own image, text and save them if they like!
 
 #### Visual side
 
