@@ -7,4 +7,4 @@
 [] then switch back!
 # JS.
 [x] if main page is toggled, it will make duplicates!
-[] cannot save random posters
+[] cannot save random posters because poster is pulling info from create poster field, not "current poster" values.
